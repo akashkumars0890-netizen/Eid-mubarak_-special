@@ -8,30 +8,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow:hidden;
 background:linear-gradient(135deg,#fff4f7,#fff7e8,#fff0f5);
-display:flex;
+}
+
+/* PAGES */
+
+.page{
+width:100vw;
+height:100vh;
+display:none;
 justify-content:center;
 align-items:center;
-height:100vh;
-margin:0;
+flex-direction:column;
+padding:20px;
 text-align:center;
+position:relative;
+overflow:auto;
 }
-.container{
-background:white;
-padding:40px;
-border-radius:25px;
-box-shadow:0 0 20px rgba(0,0,0,0.1);
-max-width:700px;
+
+.active{
+display:flex;
 }
+
+/* FLOATING ITEMS */
+
+.float{
+position:absolute;
+font-size:3rem;
+animation:float 5s infinite ease-in-out;
+opacity:0.8;
+z-index:1;
+}
+
+.moon{
+top:20px;
+left:20px;
+}
+
+.lantern1{
+top:70px;
+right:40px;
+}
+
+.lantern2{
+bottom:70px;
+left:40px;
+}
+
+@keyframes float{
+
+0%{ transform:translateY(0); }
+50%{ transform:translateY(-20px); }
+100%{ transform:translateY(0); }
+
+}
+
+/* TEXT */
+
 h1{
+font-size:3rem;
 color:#ff4f8b;
+margin-bottom:20px;
+z-index:2;
 }
-p{
-line-height:2;
-color:#555;
+
+h2{
+color:#ff4f8b;
+margin-top:20px;
+z-index:2;
 }
+
+/* BUTTON */
+
 button{
 padding:14px 28px;
 border:none;
@@ -40,23 +98,798 @@ background:#ff4f8b;
 color:white;
 font-size:1rem;
 cursor:pointer;
+margin-top:20px;
+transition:0.3s;
+z-index:2;
 }
+
+button:hover{
+transform:scale(1.08);
+}
+
+/* INTRO */
+
+.main-title{
+font-size:3rem;
+z-index:2;
+margin-top:10px;
+}
+
+.intro-box{
+width:90%;
+max-width:850px;
+background:rgba(255,255,255,0.95);
+padding:25px;
+border-radius:25px;
+line-height:2;
+margin-bottom:30px;
+box-shadow:0 0 20px rgba(0,0,0,0.08);
+z-index:2;
+}
+
+.intro-box p{
+color:#555;
+font-size:1rem;
+}
+
+/* SURPRISE BOX */
+
+.surprise-box{
+width:170px;
+height:170px;
+background:linear-gradient(135deg,#ff5f9e,#ffb347);
+border-radius:25px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:1.5rem;
+font-weight:bold;
+color:white;
+cursor:pointer;
+animation:bounce 2s infinite;
+box-shadow:0 0 30px rgba(255,105,180,0.5);
+z-index:2;
+}
+
+@keyframes bounce{
+0%{ transform:translateY(0); }
+50%{ transform:translateY(-15px); }
+100%{ transform:translateY(0); }
+}
+
+/* INPUT */
+
+input,textarea{
+padding:15px;
+border:none;
+border-radius:20px;
+outline:none;
+width:280px;
+font-size:1rem;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+/* TYPEWRITER */
+
+.typewriter{
+width:90%;
+max-width:850px;
+background:white;
+padding:30px;
+border-radius:25px;
+line-height:2;
+min-height:320px;
+overflow:auto;
+box-shadow:0 0 20px rgba(0,0,0,0.1);
+z-index:2;
+color:#555;
+}
+
+/* SHOWER */
+
+.shower{
+position:absolute;
+top:-50px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{ transform:translateY(-10vh) rotate(0deg); opacity:1; }
+100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+}
+
+/* GAME */
+
+#starArea{
+width:320px;
+height:320px;
+background:white;
+border-radius:25px;
+position:relative;
+overflow:hidden;
+box-shadow:0 0 20px rgba(0,0,0,0.1);
+}
+
+/* GIFT BOX */
+
+.gift-container{
+display:grid;
+grid-template-columns:repeat(2,180px);
+gap:20px;
+}
+
+.gift-box{
+width:180px;
+height:180px;
+background:linear-gradient(135deg,#ff8db0,#ffd56b);
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:1rem;
+cursor:pointer;
+transition:0.4s;
+padding:10px;
+flex-direction:column;
+line-height:1.5;
+overflow:hidden;
+}
+
+.gift-box:hover{
+transform:scale(1.08);
+}
+
+.gift-box img{
+margin-top:10px;
+border-radius:15px;
+}
+
+/* ENVELOPE */
+
+.envelope{
+width:280px;
+height:190px;
+background:#ff8db0;
+position:relative;
+border-radius:12px;
+cursor:pointer;
+}
+
+.envelope:before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+border-left:140px solid transparent;
+border-right:140px solid transparent;
+border-top:95px solid #ffc1d5;
+}
+
+.letter{
+display:none;
+width:90%;
+max-width:900px;
+max-height:65vh;
+overflow:auto;
+background:white;
+padding:30px;
+border-radius:25px;
+line-height:2;
+color:#555;
+}
+
+/* SPIN WHEEL */
+
+.wheel-container{
+position:relative;
+width:320px;
+height:320px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+#spinWheel{
+width:300px;
+height:300px;
+border-radius:50%;
+border:10px solid white;
+background:
+conic-gradient(
+#ff5f9e 0deg 45deg,
+#ffd56b 45deg 90deg,
+#ff8db0 90deg 135deg,
+#ffb347 135deg 180deg,
+#ff5f9e 180deg 225deg,
+#ffd56b 225deg 270deg,
+#ff8db0 270deg 315deg,
+#ffb347 315deg 360deg
+);
+box-shadow:
+0 0 25px rgba(255,105,180,0.5),
+0 0 50px rgba(255,213,107,0.5);
+transition:5s cubic-bezier(0.17,0.67,0.15,1);
+position:relative;
+}
+
+.wheel-center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90px;
+height:90px;
+border-radius:50%;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:2rem;
+}
+
+.pointer{
+position:absolute;
+top:-10px;
+width:0;
+height:0;
+border-left:20px solid transparent;
+border-right:20px solid transparent;
+border-top:40px solid #ff4f8b;
+z-index:5;
+}
+
+/* CAKE */
+
+#cake{
+position:relative;
+width:220px;
+height:260px;
+animation:rotateCake 5s infinite ease-in-out;
+}
+
+.candle{
+position:absolute;
+top:10px;
+font-size:2rem;
+animation:flicker 1s infinite alternate;
+}
+
+.candle:nth-child(1){ left:50px; }
+.candle:nth-child(2){ left:95px; }
+.candle:nth-child(3){ left:140px; }
+
+.cake-top,
+.cake-middle,
+.cake-bottom{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+border-radius:20px;
+}
+
+.cake-top{
+top:60px;
+width:140px;
+height:45px;
+background:#ffb6c1;
+}
+
+.cake-middle{
+top:110px;
+width:170px;
+height:55px;
+background:#ff8db0;
+}
+
+.cake-bottom{
+top:175px;
+width:210px;
+height:65px;
+background:#ffd56b;
+}
+
+@keyframes rotateCake{
+0%{ transform:rotateY(0deg); }
+50%{ transform:rotateY(15deg) rotateX(8deg); }
+100%{ transform:rotateY(0deg); }
+}
+
+@keyframes flicker{
+0%{ transform:scale(1); }
+100%{ transform:scale(1.1); }
+}
+
+/* FINAL BOX */
+
+.final-message-box{
+width:90%;
+max-width:850px;
+max-height:45vh;
+overflow:auto;
+background:white;
+padding:25px;
+border-radius:25px;
+line-height:2;
+box-shadow:0 0 20px rgba(0,0,0,0.1);
+margin-bottom:15px;
+}
+
+.final-message-box p{
+color:#555;
+font-size:1rem;
+}
+
+/* POPUP */
+
+#popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 0 30px rgba(0,0,0,0.2);
+z-index:999;
+width:85%;
+max-width:500px;
+max-height:80vh;
+overflow:auto;
+text-align:center;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<h1>🌙 Eid Surprise 🌙</h1>
+<div class="float moon">🌙</div>
+<div class="float lantern1">🏮</div>
+<div class="float lantern2">🏮</div>
 
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+<h1 class="main-title">🌙 Eid Surprise 🌙</h1>
+
+<div class="intro-box">
 <p>
 ✨ Welcome To A Magical Eid Surprise ✨ <br><br>
-This HTML file was generated successfully. <br><br>
-You can now open this file in any browser and continue editing or pasting your full website code inside it.
+🌙 This website is filled with cute surprises,
+games, gifts, chocolates, wishes and beautiful Eid vibes. <br><br>
+💖 Every page is specially designed to make Eid
+more joyful, magical and memorable.
+</p>
+</div>
+
+<div class="surprise-box" onclick="nextPage(2)">
+🎁 OPEN 🎁
+</div>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+<h1>✨ Enter Your Name ✨</h1>
+<input type="text" id="nameInput" placeholder="Enter Name">
+<button onclick="checkName()">Continue 💖</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+<h1>🌙 Eid Mubarak 🌙</h1>
+<div class="typewriter" id="typedText"></div>
+<button onclick="nextPage(4)">Next 🎉</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+<h1>🌟 Catch Stars 🌟</h1>
+<h1 id="score">0</h1>
+<div id="starArea"></div>
+<button onclick="nextPage(5)">Next 🎁</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+
+<h1>🎁 Gift Boxes 🎁</h1>
+
+<div class="gift-container">
+
+<div class="gift-box"
+onclick="openGift(this,'🍫<br><br>KINDER JOY<br><br><img src=excited-happy.webp width=80>')">
+Box 1
+</div>
+
+<div class="gift-box"
+onclick="openGift(this,'🍬<br><br>DAIRY MILK<br><br><img src=hungry-santa.webp width=80>')">
+Box 2
+</div>
+
+<div class="gift-box"
+onclick="openGift(this,'🍮<br><br>SWEET DISH<br><br><img src=simple-recipe-sweet-dish.gif width=80>')">
+Box 3
+</div>
+
+<div class="gift-box"
+onclick="openGift(this,'🍗<br><br>BIRYANI<br><br><img src=biryani-2.webp width=80>')">
+Box 4
+</div>
+
+</div>
+
+<button onclick="nextPage(6)">Next 💌</button>
+
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+
+<h1>💌 Open Envelope 💌</h1>
+
+<div class="envelope" onclick="openLetter()"></div>
+
+<div class="letter" id="letter">
+
+<h2>🌙 Eid Mubarak 🌙</h2>
+
+<p>
+🌸 Wishing you endless happiness and positivity. <br><br>
+🌸 May Allah bless your dreams and future. <br><br>
+🌸 May your Eid become magical and beautiful. <br><br>
+🌸 May your smile always stay bright like moonlight.
 </p>
 
-<button onclick="alert('Eid Mubarak 💖')">Open Surprise 🎁</button>
+<button onclick="nextPage(7)">Next 💸</button>
+
 </div>
+
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="page7">
+<h1>💸 Eidi Calculator 💸</h1>
+<input type="number" id="money" placeholder="Enter Eidi Amount">
+<button onclick="calculateEidi()">Calculate ✨</button>
+<h2 id="eidiResult"></h2>
+<button onclick="nextPage(8)">Next 🤲</button>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page" id="page8">
+<h1>🤲 Prayer Counter 🤲</h1>
+<h1 id="prayerCount">0</h1>
+<button onclick="increasePrayer()">+ Prayer ✨</button>
+<button onclick="nextPage(9)">Next 🌟</button>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page" id="page9">
+
+<h1>🌟 Make A Wish 🌟</h1>
+
+<textarea id="wishInput" placeholder="Write your Eid wish here..."></textarea>
+
+<button onclick="sendWish()">Send Wish ✨</button>
+
+<h2 id="wishText"></h2>
+
+<button onclick="nextPage(10)">Next 🎡</button>
+
+</div>
+
+<!-- PAGE 10 -->
+<div class="page" id="page10">
+
+<h1>🎡 Mystery Eid Spin Wheel 🎡</h1>
+
+<div class="wheel-container">
+
+<div id="spinWheel">
+<div class="wheel-center">🎁</div>
+</div>
+
+<div class="pointer"></div>
+
+</div>
+
+<button onclick="spinWheel()">SPIN NOW ✨</button>
+
+<h2 id="giftResult"></h2>
+
+<button onclick="nextPage(11)">Next 💖</button>
+
+</div>
+
+<!-- PAGE 11 -->
+<div class="page" id="page11">
+
+<h1>💖 Compliment Generator 💖</h1>
+
+<button onclick="generateCompliment()">Generate ✨</button>
+
+<h2 id="compliment"></h2>
+
+<button onclick="nextPage(12)">Next 🎂</button>
+
+</div>
+
+<!-- PAGE 12 -->
+<div class="page" id="page12">
+
+<h1>🎂 Eid Cake 🎂</h1>
+
+<div id="cake">
+
+<div class="candle">🕯️</div>
+<div class="candle">🕯️</div>
+<div class="candle">🕯️</div>
+
+<div class="cake-top"></div>
+<div class="cake-middle"></div>
+<div class="cake-bottom"></div>
+
+</div>
+
+<button onclick="blowCandle()">Blow Candle 💨</button>
+<button onclick="cutCake()">Cut Cake 🔪</button>
+
+<h2 id="cakeText"></h2>
+
+<button onclick="nextPage(13)">Final Surprise 💖</button>
+
+</div>
+
+<!-- PAGE 13 -->
+<div class="page" id="page13">
+
+<h1>🌙 Eid Mubarak 🌙</h1>
+
+<div class="final-message-box">
+
+<p>
+✨ Thank You For Opening This Little Eid Surprise ✨ <br><br>
+🌙 May your Eid become filled with happiness,
+beautiful smiles, endless laughter and magical moments. <br><br>
+🌸 May Allah bless your life with peace,
+success and positivity. <br><br>
+🍫 May your days stay sweet like chocolates,
+beautiful like flowers and joyful like Eid celebrations. <br><br>
+💖 Keep smiling because your happiness makes
+everything around more beautiful and special. <br><br>
+✨ Eid Mubarak Once Again ✨
+</p>
+
+</div>
+
+<h2>💖 How Did You Like This Website? 💖</h2>
+
+<textarea id="reviewText" placeholder="Write your review here..."></textarea>
+
+<button onclick="submitReview()">Send Review ✨</button>
+
+<h2 id="reviewMsg"></h2>
+
+<button onclick="openPopup()">Open Final Message 💖</button>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+
+<h1>🌙 Eid Mubarak 🌙</h1>
+
+<img src="eid-mubarak-alicia-souza.gif" width="220" style="border-radius:20px;margin:15px 0;">
+
+<p style="line-height:2;color:#555;">
+✨ Thank you for being such a wonderful and sweet person ✨ <br><br>
+🌸 May your life always stay filled with happiness,
+cute memories, positivity and beautiful moments. <br><br>
+💖 Keep smiling because your smile can brighten
+anyone's day and make everything feel magical. <br><br>
+🌙 Wishing you lots of joy, chocolates,
+flowers and endless Eid happiness.
+</p>
+
+<button onclick="closePopup()">Close 💖</button>
+
+</div>
+
+<script>
+
+// PAGE SWITCH
+function nextPage(page){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('page'+page).classList.add('active');
+}
+
+// NAME CHECK
+function checkName(){
+let name=document.getElementById('nameInput').value.toLowerCase();
+if(name==="uzhilla"){
+nextPage(3);
+startTyping();
+createShower();
+}else{
+alert("Enter Correct Name 💖");
+}
+}
+
+// TYPEWRITER
+const message=`✨ Eid Mubarak ✨
+
+🌸 Wishing you happiness and smiles.
+🌸 May Allah bless your dreams.
+🌸 Enjoy chocolates and Eid moments 💖
+🌙 May your smile stay bright forever.
+💖 May your Eid become magical and beautiful.`;
+
+let i=0;
+
+function startTyping(){
+document.getElementById('typedText').innerHTML='';
+function typing(){
+if(i<message.length){
+document.getElementById('typedText').innerHTML+=message.charAt(i);
+i++; setTimeout(typing,35);
+}
+}
+typing();
+}
+
+// EMOJI SHOWER
+function createShower(){
+const emojis=['🌸','💖','✨','🍫','🌙'];
+let showerInterval=setInterval(()=>{
+let shower=document.createElement('div');
+shower.classList.add('shower');
+shower.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+shower.style.left=Math.random()*100+'vw';
+shower.style.animationDuration=(Math.random()*3+2)+'s';
+shower.style.fontSize=(Math.random()*20+20)+'px';
+document.body.appendChild(shower);
+setTimeout(()=>{ shower.remove(); },5000);
+},250);
+setTimeout(()=>{ clearInterval(showerInterval); },12000);
+}
+
+// STAR GAME
+let score=0;
+function createStar(){
+let star=document.createElement('div');
+star.innerHTML='⭐';
+star.style.position='absolute';
+star.style.fontSize='2rem';
+star.style.cursor='pointer';
+star.style.left=Math.random()*280+'px';
+star.style.top=Math.random()*280+'px';
+star.onclick=function(){
+score++;
+document.getElementById('score').innerHTML=score;
+star.remove();
+};
+document.getElementById('starArea').appendChild(star);
+setTimeout(()=>{ star.remove(); },2000);
+}
+
+setInterval(()=>{
+if(document.getElementById('page4').classList.contains('active')){
+createStar();
+}
+},700);
+
+// OPEN GIFT
+function openGift(box,content){
+box.innerHTML=content;
+}
+
+// OPEN LETTER
+function openLetter(){
+document.getElementById('letter').style.display='block';
+}
+
+// EIDI CALCULATOR
+function calculateEidi(){
+let money=document.getElementById('money').value;
+let chocolates=Math.floor(money/100);
+let icecream=Math.floor(money/60);
+let flowers=Math.floor(money/150);
+document.getElementById('eidiResult').innerHTML=
+'🍫 '+chocolates+' Chocolates <br><br>'+
+'🍨 '+icecream+' Ice Creams <br><br>'+
+'🌸 '+flowers+' Flower Bouquets';
+}
+
+// PRAYER COUNTER
+let prayers=0;
+function increasePrayer(){
+prayers++;
+document.getElementById('prayerCount').innerHTML=prayers;
+}
+
+// WISH
+function sendWish(){
+let wish=document.getElementById('wishInput').value;
+if(wish.trim()===''){
+alert('✨ Please Write A Wish 💖');
+}else{
+document.getElementById('wishText').innerHTML='🌟 Your Wish Has Been Sent ✨';
+}
+}
+
+// SPIN WHEEL
+const gifts=[
+'💄 Makeup Kit','🧸 Teddy Bear','🍫 Chocolate Basket',
+'👗 Cute Dress','👜 Handbag','🌸 Flower Bouquet',
+'🍨 Ice Cream Treat','💍 Bracelet'
+];
+
+let currentRotation=0;
+
+function spinWheel(){
+const wheel=document.getElementById('spinWheel');
+const random=Math.floor(Math.random()*gifts.length);
+const extraSpin=3600;
+const segment=360/gifts.length;
+const finalRotation=extraSpin+(360-random*segment);
+currentRotation+=finalRotation;
+wheel.style.transform='rotate('+currentRotation+'deg)';
+setTimeout(()=>{
+document.getElementById('giftResult').innerHTML=
+'🎁 You Won '+gifts[random]+' ✨';
+},5000);
+}
+
+// COMPLIMENT GENERATOR
+const compliments=[
+'✨ Your smile shines brighter than the Eid moon 🌙',
+'💖 You make every moment feel magical ✨',
+'🌸 Your happiness is more precious than chocolates 🍫',
+'🌙 Your smile can light up the darkest night ✨'
+];
+
+function generateCompliment(){
+let random=compliments[Math.floor(Math.random()*compliments.length)];
+document.getElementById('compliment').innerHTML=random;
+}
+
+// CAKE
+function blowCandle(){
+document.querySelectorAll('.candle').forEach(c=>{ c.innerHTML='💨'; });
+}
+
+function cutCake(){
+document.getElementById('cakeText').innerHTML='🎂 Cake Successfully Cut ✨';
+}
+
+// REVIEW
+function submitReview(){
+let review=document.getElementById('reviewText').value;
+if(review.trim()===''){
+alert('✨ Please Write Review 💖');
+}else{
+document.getElementById('reviewMsg').innerHTML=
+'💖 Thank You For Your Beautiful Review ✨';
+}
+}
+
+// POPUP
+function openPopup(){
+document.getElementById('popup').style.display='block';
+}
+
+function closePopup(){
+document.getElementById('popup').style.display='none';
+}
+
+</script>
 
 </body>
 </html>
